@@ -4,6 +4,10 @@
 
 This project explores the approximation of π by simulating collisions between two blocks and a wall. The inspiration for this project comes from G. Galperin's work titled ["Playing Pool with π"](https://www.maths.tcd.ie/~lebed/Galperin.%20Playing%20pool%20with%20pi.pdf) and the 3blue1brown video ["Why do colliding blocks compute π?"](https://www.youtube.com/watch?v=HEfHFsfGXjs). The simulation utilizes  formulas for [elastic collision](https://en.wikipedia.org/wiki/Elastic_collision) and [Euler's Integration method](https://en.wikipedia.org/wiki/Euler_method) to expedite calculations with larger timesteps.
 
+## Illustration
+
+![3 digits of pi](animation_pi.gif)
+
 ## Sources
 
 - [G. Galperin's "Playing Pool with π"](https://www.maths.tcd.ie/~lebed/Galperin.%20Playing%20pool%20with%20pi.pdf)
