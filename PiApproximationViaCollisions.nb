@@ -1,0 +1,40 @@
+mn = 7;
+m1 = 1;
+m2 = 100^(mn - 1);
+timesteps = Power[10, mn - 1];
+timesteps = 50000;
+v1 = 0;
+v2 = -0.5/timesteps;
+d = 10;
+x1 = 5;
+x2 = 50;
+n = 0;
+
+G[] := Module[{rect1, rect2},
+  For[i = 0, i < timesteps, i++,
+   If[x1 + d >= x2,
+    newv1 = ((m1 - m2)/(m1 + m2))*v1 + ((2*m2)/(m1 + m2))*v2;
+    newv2 = ((2*m1)/(m1 + m2))*v1 + ((m2 - m1)/(m1 + m2))*v2;
+    v1 = newv1;
+    v2 = newv2;
+    n = n + 1;
+    ];
+   If[x1 <= 0,
+    v1 = v1*-1;
+    n = n + 1;
+    ];
+   x1 = x1 + v1;
+   x2 = x2 + v2;
+   t = t + 1;
+   ];
+  {x1, x2, v1, v2, n} 
+  ]
+
+Manipulate[{x1, x2, v1, v2, n} = G[];
+ Show[Graphics[{Red, Rectangle[{x1, 0}, {x1 + d, 10}], Blue, 
+    Rectangle[{x2, 0}, {x2 + d, 10}]}], 
+  PlotRange -> {{0, 60}, {0, 30}}, 
+  PlotLabel -> 
+   Style[Row[{" \[Pi] = ", NumberForm[N[n], mn]}], 24]], {{t, 0, 
+   "time"}, 0, \[Infinity], Trigger}, TrackedSymbols :> {t}, 
+ ControlPlacement -> Top, SaveDefinitions -> True]
